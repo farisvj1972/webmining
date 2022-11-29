@@ -384,7 +384,51 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="perangkingan-kalimat-berita-dengan-method-page-rank">
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">KeyboardInterrupt</span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">d5df0069828e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/google/colab/drive.py</span> in <span class="ni">mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>       <span class="n">timeout_ms</span><span class="o">=</span><span class="n">timeout_ms</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>       <span class="n">ephemeral</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">106</span>       <span class="n">readonly</span><span class="o">=</span><span class="n">readonly</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> 
+<span class="g g-Whitespace">    </span><span class="mi">108</span> 
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/google/colab/drive.py</span> in <span class="ni">_mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, ephemeral, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>   <span class="k">if</span> <span class="n">ephemeral</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>     <span class="n">_message</span><span class="o">.</span><span class="n">blocking_request</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">125</span>         <span class="s1">&#39;request_auth&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;authType&#39;</span><span class="p">:</span> <span class="s1">&#39;dfs_ephemeral&#39;</span><span class="p">},</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span> 
+<span class="g g-Whitespace">    </span><span class="mi">127</span>   <span class="n">mountpoint</span> <span class="o">=</span> <span class="n">_os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">mountpoint</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/google/colab/_message.py</span> in <span class="ni">blocking_request</span><span class="nt">(request_type, request, timeout_sec, parent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span>   <span class="n">request_id</span> <span class="o">=</span> <span class="n">send_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span>       <span class="n">request_type</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">expect_reply</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">171</span>   <span class="k">return</span> <span class="n">read_reply_from_input</span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/google/colab/_message.py</span> in <span class="ni">read_reply_from_input</span><span class="nt">(message_id, timeout_sec)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="n">reply</span> <span class="o">=</span> <span class="n">_read_next_input_message</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="k">if</span> <span class="n">reply</span> <span class="o">==</span> <span class="n">_NOT_READY</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">97</span>       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>       <span class="k">continue</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">if</span> <span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;colab_reply&#39;</span> <span class="ow">and</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<section id="perangkingan-kalimat-berita-dengan-method-page-rank">
 <h1>Perangkingan Kalimat Berita dengan Method Page Rank<a class="headerlink" href="#perangkingan-kalimat-berita-dengan-method-page-rank" title="Permalink to this headline">#</a></h1>
 <p><strong>Penjelasan Scrapy</strong></p>
 <p>Scrapy adalah web crawling dan web scraping framework tingkat tinggi yang cepat, digunakan untuk merayapi situs web dan mengekstrak data terstruktur dari halaman mereka. Ini dapat digunakan untuk berbagai tujuan, mulai dari penambangan data hingga pemantauan dan pengujian otomatis.</p>
@@ -397,918 +441,58 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting scrapy
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading Scrapy-2.7.1-py2.py3-none-any.whl (271 kB)
-?25l
-     |█▏                              | 10 kB 23.5 MB/s eta 0:00:01
-     |██▍                             | 20 kB 22.8 MB/s eta 0:00:01
-     |███▋                            | 30 kB 24.8 MB/s eta 0:00:01
-     |████▉                           | 40 kB 16.5 MB/s eta 0:00:01
-     |██████                          | 51 kB 12.0 MB/s eta 0:00:01
-     |███████▎                        | 61 kB 13.9 MB/s eta 0:00:01
-     |████████▌                       | 71 kB 14.2 MB/s eta 0:00:01
-     |█████████▋                      | 81 kB 15.6 MB/s eta 0:00:01
-     |██████████▉                     | 92 kB 17.1 MB/s eta 0:00:01
-     |████████████                    | 102 kB 16.6 MB/s eta 0:00:01
-     |█████████████▎                  | 112 kB 16.6 MB/s eta 0:00:01
-     |██████████████▌                 | 122 kB 16.6 MB/s eta 0:00:01
-     |███████████████▊                | 133 kB 16.6 MB/s eta 0:00:01
-     |█████████████████               | 143 kB 16.6 MB/s eta 0:00:01
-     |██████████████████              | 153 kB 16.6 MB/s eta 0:00:01
-     |███████████████████▎            | 163 kB 16.6 MB/s eta 0:00:01
-     |████████████████████▌           | 174 kB 16.6 MB/s eta 0:00:01
-     |█████████████████████▊          | 184 kB 16.6 MB/s eta 0:00:01
-     |███████████████████████         | 194 kB 16.6 MB/s eta 0:00:01
-     |████████████████████████▏       | 204 kB 16.6 MB/s eta 0:00:01
-     |█████████████████████████▍      | 215 kB 16.6 MB/s eta 0:00:01
-     |██████████████████████████▌     | 225 kB 16.6 MB/s eta 0:00:01
-     |███████████████████████████▊    | 235 kB 16.6 MB/s eta 0:00:01
-     |█████████████████████████████   | 245 kB 16.6 MB/s eta 0:00:01
-     |██████████████████████████████▏ | 256 kB 16.6 MB/s eta 0:00:01
-     |███████████████████████████████▍| 266 kB 16.6 MB/s eta 0:00:01
-     |████████████████████████████████| 271 kB 16.6 MB/s 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>?25hCollecting pyOpenSSL&gt;=21.0.0
-  Downloading pyOpenSSL-22.1.0-py3-none-any.whl (57 kB)
-?25l
-     |█████▊                          | 10 kB 31.3 MB/s eta 0:00:01
-     |███████████▌                    | 20 kB 1.8 MB/s eta 0:00:01
-     |█████████████████▎              | 30 kB 2.6 MB/s eta 0:00:01
-     |███████████████████████         | 40 kB 3.4 MB/s eta 0:00:01
-     |████████████████████████████▊   | 51 kB 4.3 MB/s eta 0:00:01
-     |████████████████████████████████| 57 kB 2.7 MB/s 
-?25hCollecting parsel&gt;=1.5.0
-  Downloading parsel-1.7.0-py2.py3-none-any.whl (14 kB)
+Requirement already satisfied: scrapy in /usr/local/lib/python3.7/dist-packages (2.7.1)
+Requirement already satisfied: zope.interface&gt;=5.1.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (5.5.2)
+Requirement already satisfied: protego&gt;=0.1.15 in /usr/local/lib/python3.7/dist-packages (from scrapy) (0.2.1)
+Requirement already satisfied: itemadapter&gt;=0.1.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (0.7.0)
+Requirement already satisfied: PyDispatcher&gt;=2.0.5 in /usr/local/lib/python3.7/dist-packages (from scrapy) (2.0.6)
 Requirement already satisfied: lxml&gt;=4.3.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (4.9.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting Twisted&gt;=18.9.0
-  Downloading Twisted-22.10.0-py3-none-any.whl (3.1 MB)
-?25l
-     |                                | 10 kB 34.5 MB/s eta 0:00:01
-     |▏                               | 20 kB 43.0 MB/s eta 0:00:01
-     |▎                               | 30 kB 49.1 MB/s eta 0:00:01
-     |▍                               | 40 kB 54.6 MB/s eta 0:00:01
-     |▌                               | 51 kB 58.0 MB/s eta 0:00:01
-     |▋                               | 61 kB 61.3 MB/s eta 0:00:01
-     |▊                               | 71 kB 60.5 MB/s eta 0:00:01
-     |▉                               | 81 kB 62.2 MB/s eta 0:00:01
-     |█                               | 92 kB 63.4 MB/s eta 0:00:01
-     |█                               | 102 kB 62.8 MB/s eta 0:00:01
-     |█▏                              | 112 kB 62.8 MB/s eta 0:00:01
-     |█▎                              | 122 kB 62.8 MB/s eta 0:00:01
-     |█▍                              | 133 kB 62.8 MB/s eta 0:00:01
-     |█▌                              | 143 kB 62.8 MB/s eta 0:00:01
-     |█▋                              | 153 kB 62.8 MB/s eta 0:00:01
-     |█▊                              | 163 kB 62.8 MB/s eta 0:00:01
-     |█▉                              | 174 kB 62.8 MB/s eta 0:00:01
-     |██                              | 184 kB 62.8 MB/s eta 0:00:01
-     |██                              | 194 kB 62.8 MB/s eta 0:00:01
-     |██                              | 204 kB 62.8 MB/s eta 0:00:01
-     |██▏                             | 215 kB 62.8 MB/s eta 0:00:01
-     |██▎                             | 225 kB 62.8 MB/s eta 0:00:01
-     |██▍                             | 235 kB 62.8 MB/s eta 0:00:01
-     |██▌                             | 245 kB 62.8 MB/s eta 0:00:01
-     |██▋                             | 256 kB 62.8 MB/s eta 0:00:01
-     |██▊                             | 266 kB 62.8 MB/s eta 0:00:01
-     |██▉                             | 276 kB 62.8 MB/s eta 0:00:01
-     |███                             | 286 kB 62.8 MB/s eta 0:00:01
-     |███                             | 296 kB 62.8 MB/s eta 0:00:01
-     |███▏                            | 307 kB 62.8 MB/s eta 0:00:01
-     |███▎                            | 317 kB 62.8 MB/s eta 0:00:01
-     |███▍                            | 327 kB 62.8 MB/s eta 0:00:01
-     |███▌                            | 337 kB 62.8 MB/s eta 0:00:01
-     |███▋                            | 348 kB 62.8 MB/s eta 0:00:01
-     |███▊                            | 358 kB 62.8 MB/s eta 0:00:01
-     |███▉                            | 368 kB 62.8 MB/s eta 0:00:01
-     |███▉                            | 378 kB 62.8 MB/s eta 0:00:01
-     |████                            | 389 kB 62.8 MB/s eta 0:00:01
-     |████                            | 399 kB 62.8 MB/s eta 0:00:01
-     |████▏                           | 409 kB 62.8 MB/s eta 0:00:01
-     |████▎                           | 419 kB 62.8 MB/s eta 0:00:01
-     |████▍                           | 430 kB 62.8 MB/s eta 0:00:01
-     |████▌                           | 440 kB 62.8 MB/s eta 0:00:01
-     |████▋                           | 450 kB 62.8 MB/s eta 0:00:01
-     |████▊                           | 460 kB 62.8 MB/s eta 0:00:01
-     |████▉                           | 471 kB 62.8 MB/s eta 0:00:01
-     |█████                           | 481 kB 62.8 MB/s eta 0:00:01
-     |█████                           | 491 kB 62.8 MB/s eta 0:00:01
-     |█████▏                          | 501 kB 62.8 MB/s eta 0:00:01
-     |█████▎                          | 512 kB 62.8 MB/s eta 0:00:01
-     |█████▍                          | 522 kB 62.8 MB/s eta 0:00:01
-     |█████▌                          | 532 kB 62.8 MB/s eta 0:00:01
-     |█████▋                          | 542 kB 62.8 MB/s eta 0:00:01
-     |█████▊                          | 552 kB 62.8 MB/s eta 0:00:01
-     |█████▊                          | 563 kB 62.8 MB/s eta 0:00:01
-     |█████▉                          | 573 kB 62.8 MB/s eta 0:00:01
-     |██████                          | 583 kB 62.8 MB/s eta 0:00:01
-     |██████                          | 593 kB 62.8 MB/s eta 0:00:01
-     |██████▏                         | 604 kB 62.8 MB/s eta 0:00:01
-     |██████▎                         | 614 kB 62.8 MB/s eta 0:00:01
-     |██████▍                         | 624 kB 62.8 MB/s eta 0:00:01
-     |██████▌                         | 634 kB 62.8 MB/s eta 0:00:01
-     |██████▋                         | 645 kB 62.8 MB/s eta 0:00:01
-     |██████▊                         | 655 kB 62.8 MB/s eta 0:00:01
-     |██████▉                         | 665 kB 62.8 MB/s eta 0:00:01
-     |███████                         | 675 kB 62.8 MB/s eta 0:00:01
-     |███████                         | 686 kB 62.8 MB/s eta 0:00:01
-     |███████▏                        | 696 kB 62.8 MB/s eta 0:00:01
-     |███████▎                        | 706 kB 62.8 MB/s eta 0:00:01
-     |███████▍                        | 716 kB 62.8 MB/s eta 0:00:01
-     |███████▌                        | 727 kB 62.8 MB/s eta 0:00:01
-     |███████▋                        | 737 kB 62.8 MB/s eta 0:00:01
-     |███████▊                        | 747 kB 62.8 MB/s eta 0:00:01
-     |███████▊                        | 757 kB 62.8 MB/s eta 0:00:01
-     |███████▉                        | 768 kB 62.8 MB/s eta 0:00:01
-     |████████                        | 778 kB 62.8 MB/s eta 0:00:01
-     |████████                        | 788 kB 62.8 MB/s eta 0:00:01
-     |████████▏                       | 798 kB 62.8 MB/s eta 0:00:01
-     |████████▎                       | 808 kB 62.8 MB/s eta 0:00:01
-     |████████▍                       | 819 kB 62.8 MB/s eta 0:00:01
-     |████████▌                       | 829 kB 62.8 MB/s eta 0:00:01
-     |████████▋                       | 839 kB 62.8 MB/s eta 0:00:01
-     |████████▊                       | 849 kB 62.8 MB/s eta 0:00:01
-     |████████▉                       | 860 kB 62.8 MB/s eta 0:00:01
-     |█████████                       | 870 kB 62.8 MB/s eta 0:00:01
-     |█████████                       | 880 kB 62.8 MB/s eta 0:00:01
-     |█████████▏                      | 890 kB 62.8 MB/s eta 0:00:01
-     |█████████▎                      | 901 kB 62.8 MB/s eta 0:00:01
-     |█████████▍                      | 911 kB 62.8 MB/s eta 0:00:01
-     |█████████▌                      | 921 kB 62.8 MB/s eta 0:00:01
-     |█████████▋                      | 931 kB 62.8 MB/s eta 0:00:01
-     |█████████▋                      | 942 kB 62.8 MB/s eta 0:00:01
-     |█████████▊                      | 952 kB 62.8 MB/s eta 0:00:01
-     |█████████▉                      | 962 kB 62.8 MB/s eta 0:00:01
-     |██████████                      | 972 kB 62.8 MB/s eta 0:00:01
-     |██████████                      | 983 kB 62.8 MB/s eta 0:00:01
-     |██████████▏                     | 993 kB 62.8 MB/s eta 0:00:01
-     |██████████▎                     | 1.0 MB 62.8 MB/s eta 0:00:01
-     |██████████▍                     | 1.0 MB 62.8 MB/s eta 0:00:01
-     |██████████▌                     | 1.0 MB 62.8 MB/s eta 0:00:01
-     |██████████▋                     | 1.0 MB 62.8 MB/s eta 0:00:01
-     |██████████▊                     | 1.0 MB 62.8 MB/s eta 0:00:01
-     |██████████▉                     | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████                     | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████                     | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████▏                    | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████▎                    | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████▍                    | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████▌                    | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████▌                    | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████▋                    | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████▊                    | 1.1 MB 62.8 MB/s eta 0:00:01
-     |███████████▉                    | 1.2 MB 62.8 MB/s eta 0:00:01
-     |████████████                    | 1.2 MB 62.8 MB/s eta 0:00:01
-     |████████████                    | 1.2 MB 62.8 MB/s eta 0:00:01
-     |████████████▏                   | 1.2 MB 62.8 MB/s eta 0:00:01
-     |████████████▎                   | 1.2 MB 62.8 MB/s eta 0:00:01
-     |████████████▍                   | 1.2 MB 62.8 MB/s eta 0:00:01
-     |████████████▌                   | 1.2 MB 62.8 MB/s eta 0:00:01
-     |████████████▋                   | 1.2 MB 62.8 MB/s eta 0:00:01
-     |████████████▊                   | 1.2 MB 62.8 MB/s eta 0:00:01
-     |████████████▉                   | 1.2 MB 62.8 MB/s eta 0:00:01
-     |█████████████                   | 1.3 MB 62.8 MB/s eta 0:00:01
-     |█████████████                   | 1.3 MB 62.8 MB/s eta 0:00:01
-     |█████████████▏                  | 1.3 MB 62.8 MB/s eta 0:00:01
-     |█████████████▎                  | 1.3 MB 62.8 MB/s eta 0:00:01
-     |█████████████▍                  | 1.3 MB 62.8 MB/s eta 0:00:01
-     |█████████████▌                  | 1.3 MB 62.8 MB/s eta 0:00:01
-     |█████████████▌                  | 1.3 MB 62.8 MB/s eta 0:00:01
-     |█████████████▋                  | 1.3 MB 62.8 MB/s eta 0:00:01
-     |█████████████▊                  | 1.3 MB 62.8 MB/s eta 0:00:01
-     |█████████████▉                  | 1.4 MB 62.8 MB/s eta 0:00:01
-     |██████████████                  | 1.4 MB 62.8 MB/s eta 0:00:01
-     |██████████████                  | 1.4 MB 62.8 MB/s eta 0:00:01
-     |██████████████▏                 | 1.4 MB 62.8 MB/s eta 0:00:01
-     |██████████████▎                 | 1.4 MB 62.8 MB/s eta 0:00:01
-     |██████████████▍                 | 1.4 MB 62.8 MB/s eta 0:00:01
-     |██████████████▌                 | 1.4 MB 62.8 MB/s eta 0:00:01
-     |██████████████▋                 | 1.4 MB 62.8 MB/s eta 0:00:01
-     |██████████████▊                 | 1.4 MB 62.8 MB/s eta 0:00:01
-     |██████████████▉                 | 1.4 MB 62.8 MB/s eta 0:00:01
-     |███████████████                 | 1.5 MB 62.8 MB/s eta 0:00:01
-     |███████████████                 | 1.5 MB 62.8 MB/s eta 0:00:01
-     |███████████████▏                | 1.5 MB 62.8 MB/s eta 0:00:01
-     |███████████████▎                | 1.5 MB 62.8 MB/s eta 0:00:01
-     |███████████████▍                | 1.5 MB 62.8 MB/s eta 0:00:01
-     |███████████████▍                | 1.5 MB 62.8 MB/s eta 0:00:01
-     |███████████████▌                | 1.5 MB 62.8 MB/s eta 0:00:01
-     |███████████████▋                | 1.5 MB 62.8 MB/s eta 0:00:01
-     |███████████████▊                | 1.5 MB 62.8 MB/s eta 0:00:01
-     |███████████████▉                | 1.5 MB 62.8 MB/s eta 0:00:01
-     |████████████████                | 1.6 MB 62.8 MB/s eta 0:00:01
-     |████████████████                | 1.6 MB 62.8 MB/s eta 0:00:01
-     |████████████████▏               | 1.6 MB 62.8 MB/s eta 0:00:01
-     |████████████████▎               | 1.6 MB 62.8 MB/s eta 0:00:01
-     |████████████████▍               | 1.6 MB 62.8 MB/s eta 0:00:01
-     |████████████████▌               | 1.6 MB 62.8 MB/s eta 0:00:01
-     |████████████████▋               | 1.6 MB 62.8 MB/s eta 0:00:01
-     |████████████████▊               | 1.6 MB 62.8 MB/s eta 0:00:01
-     |████████████████▉               | 1.6 MB 62.8 MB/s eta 0:00:01
-     |█████████████████               | 1.6 MB 62.8 MB/s eta 0:00:01
-     |█████████████████               | 1.7 MB 62.8 MB/s eta 0:00:01
-     |█████████████████▏              | 1.7 MB 62.8 MB/s eta 0:00:01
-     |█████████████████▎              | 1.7 MB 62.8 MB/s eta 0:00:01
-     |█████████████████▎              | 1.7 MB 62.8 MB/s eta 0:00:01
-     |█████████████████▍              | 1.7 MB 62.8 MB/s eta 0:00:01
-     |█████████████████▌              | 1.7 MB 62.8 MB/s eta 0:00:01
-     |█████████████████▋              | 1.7 MB 62.8 MB/s eta 0:00:01
-     |█████████████████▊              | 1.7 MB 62.8 MB/s eta 0:00:01
-     |█████████████████▉              | 1.7 MB 62.8 MB/s eta 0:00:01
-     |██████████████████              | 1.8 MB 62.8 MB/s eta 0:00:01
-     |██████████████████              | 1.8 MB 62.8 MB/s eta 0:00:01
-     |██████████████████▏             | 1.8 MB 62.8 MB/s eta 0:00:01
-     |██████████████████▎             | 1.8 MB 62.8 MB/s eta 0:00:01
-     |██████████████████▍             | 1.8 MB 62.8 MB/s eta 0:00:01
-     |██████████████████▌             | 1.8 MB 62.8 MB/s eta 0:00:01
-     |██████████████████▋             | 1.8 MB 62.8 MB/s eta 0:00:01
-     |██████████████████▊             | 1.8 MB 62.8 MB/s eta 0:00:01
-     |██████████████████▉             | 1.8 MB 62.8 MB/s eta 0:00:01
-     |███████████████████             | 1.8 MB 62.8 MB/s eta 0:00:01
-     |███████████████████             | 1.9 MB 62.8 MB/s eta 0:00:01
-     |███████████████████▏            | 1.9 MB 62.8 MB/s eta 0:00:01
-     |███████████████████▎            | 1.9 MB 62.8 MB/s eta 0:00:01
-     |███████████████████▎            | 1.9 MB 62.8 MB/s eta 0:00:01
-     |███████████████████▍            | 1.9 MB 62.8 MB/s eta 0:00:01
-     |███████████████████▌            | 1.9 MB 62.8 MB/s eta 0:00:01
-     |███████████████████▋            | 1.9 MB 62.8 MB/s eta 0:00:01
-     |███████████████████▊            | 1.9 MB 62.8 MB/s eta 0:00:01
-     |███████████████████▉            | 1.9 MB 62.8 MB/s eta 0:00:01
-     |████████████████████            | 1.9 MB 62.8 MB/s eta 0:00:01
-     |████████████████████            | 2.0 MB 62.8 MB/s eta 0:00:01
-     |████████████████████▏           | 2.0 MB 62.8 MB/s eta 0:00:01
-     |████████████████████▎           | 2.0 MB 62.8 MB/s eta 0:00:01
-     |████████████████████▍           | 2.0 MB 62.8 MB/s eta 0:00:01
-     |████████████████████▌           | 2.0 MB 62.8 MB/s eta 0:00:01
-     |████████████████████▋           | 2.0 MB 62.8 MB/s eta 0:00:01
-
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |████████████████████▊           | 2.0 MB 62.8 MB/s eta 0:00:01
-     |████████████████████▉           | 2.0 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████           | 2.0 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████           | 2.0 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████▏          | 2.1 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████▏          | 2.1 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████▎          | 2.1 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████▍          | 2.1 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████▌          | 2.1 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████▋          | 2.1 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████▊          | 2.1 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████▉          | 2.1 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████          | 2.1 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████          | 2.2 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████▏         | 2.2 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████▎         | 2.2 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████▍         | 2.2 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████▌         | 2.2 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████▋         | 2.2 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████▊         | 2.2 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████▉         | 2.2 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████         | 2.2 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████         | 2.2 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████         | 2.3 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████▏        | 2.3 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████▎        | 2.3 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████▍        | 2.3 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████▌        | 2.3 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████▋        | 2.3 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████▊        | 2.3 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████▉        | 2.3 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████        | 2.3 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████        | 2.3 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████▏       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████▎       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████▍       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████▌       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████▋       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████▊       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████▉       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████       | 2.4 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████▏      | 2.5 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████▎      | 2.5 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████▍      | 2.5 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████▌      | 2.5 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████▋      | 2.5 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████▊      | 2.5 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████▉      | 2.5 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████      | 2.5 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████      | 2.5 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████▏     | 2.5 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████▎     | 2.6 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████▍     | 2.6 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████▌     | 2.6 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████▋     | 2.6 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████▊     | 2.6 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████▉     | 2.6 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████     | 2.6 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████     | 2.6 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████     | 2.6 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████▏    | 2.7 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████▎    | 2.7 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████▍    | 2.7 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████▌    | 2.7 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████▋    | 2.7 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████▊    | 2.7 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████▉    | 2.7 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████    | 2.7 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████    | 2.7 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████▏   | 2.7 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████▎   | 2.8 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████▍   | 2.8 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████▌   | 2.8 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████▋   | 2.8 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████▊   | 2.8 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████▉   | 2.8 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████▉   | 2.8 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████████   | 2.8 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████████   | 2.8 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████████▏  | 2.8 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████████▎  | 2.9 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████████▍  | 2.9 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████████▌  | 2.9 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████████▋  | 2.9 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████████▊  | 2.9 MB 62.8 MB/s eta 0:00:01
-     |█████████████████████████████▉  | 2.9 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████  | 2.9 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████  | 2.9 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████▏ | 2.9 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████▎ | 2.9 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████▍ | 3.0 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████▌ | 3.0 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████▋ | 3.0 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████▊ | 3.0 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████▊ | 3.0 MB 62.8 MB/s eta 0:00:01
-     |██████████████████████████████▉ | 3.0 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████████ | 3.0 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████████ | 3.0 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████████▏| 3.0 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████████▎| 3.1 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████████▍| 3.1 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████████▌| 3.1 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████████▋| 3.1 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████████▊| 3.1 MB 62.8 MB/s eta 0:00:01
-     |███████████████████████████████▉| 3.1 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████████| 3.1 MB 62.8 MB/s eta 0:00:01
-     |████████████████████████████████| 3.1 MB 62.8 MB/s 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>?25hCollecting tldextract
-  Downloading tldextract-3.4.0-py3-none-any.whl (93 kB)
-?25l
-     |███▌                            | 10 kB 29.6 MB/s eta 0:00:01
-     |███████                         | 20 kB 39.8 MB/s eta 0:00:01
-     |██████████▌                     | 30 kB 36.0 MB/s eta 0:00:01
-     |██████████████                  | 40 kB 41.8 MB/s eta 0:00:01
-     |█████████████████▍              | 51 kB 46.2 MB/s eta 0:00:01
-     |█████████████████████           | 61 kB 51.3 MB/s eta 0:00:01
-     |████████████████████████▍       | 71 kB 55.0 MB/s eta 0:00:01
-     |████████████████████████████    | 81 kB 58.0 MB/s eta 0:00:01
-     |███████████████████████████████▍| 92 kB 61.8 MB/s eta 0:00:01
-     |████████████████████████████████| 93 kB 1.3 MB/s 
-?25hCollecting w3lib&gt;=1.17.0
-  Downloading w3lib-2.0.1-py3-none-any.whl (20 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting queuelib&gt;=1.4.2
-  Downloading queuelib-1.6.2-py2.py3-none-any.whl (13 kB)
-Collecting PyDispatcher&gt;=2.0.5
-  Downloading PyDispatcher-2.0.6.tar.gz (38 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting itemloaders&gt;=1.0.1
-  Downloading itemloaders-1.0.6-py3-none-any.whl (11 kB)
+Requirement already satisfied: cryptography&gt;=3.3 in /usr/local/lib/python3.7/dist-packages (from scrapy) (38.0.4)
+Requirement already satisfied: service-identity&gt;=18.1.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (21.1.0)
+Requirement already satisfied: tldextract in /usr/local/lib/python3.7/dist-packages (from scrapy) (3.4.0)
+Requirement already satisfied: w3lib&gt;=1.17.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (2.1.0)
+Requirement already satisfied: itemloaders&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from scrapy) (1.0.6)
+Requirement already satisfied: Twisted&gt;=18.9.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (22.10.0)
+Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from scrapy) (21.3)
+Requirement already satisfied: parsel&gt;=1.5.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (1.7.0)
+Requirement already satisfied: queuelib&gt;=1.4.2 in /usr/local/lib/python3.7/dist-packages (from scrapy) (1.6.2)
+Requirement already satisfied: pyOpenSSL&gt;=21.0.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (22.1.0)
 Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from scrapy) (57.4.0)
-Collecting service-identity&gt;=18.1.0
-  Downloading service_identity-21.1.0-py2.py3-none-any.whl (12 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting cryptography&gt;=3.3
-  Downloading cryptography-38.0.3-cp36-abi3-manylinux_2_24_x86_64.whl (4.1 MB)
-?25l
-     |                                | 10 kB 30.8 MB/s eta 0:00:01
-     |▏                               | 20 kB 40.3 MB/s eta 0:00:01
-     |▎                               | 30 kB 48.5 MB/s eta 0:00:01
-     |▎                               | 40 kB 52.7 MB/s eta 0:00:01
-     |▍                               | 51 kB 56.5 MB/s eta 0:00:01
-     |▌                               | 61 kB 59.9 MB/s eta 0:00:01
-     |▋                               | 71 kB 59.1 MB/s eta 0:00:01
-     |▋                               | 81 kB 61.2 MB/s eta 0:00:01
-     |▊                               | 92 kB 63.7 MB/s eta 0:00:01
-     |▉                               | 102 kB 65.7 MB/s eta 0:00:01
-     |█                               | 112 kB 65.7 MB/s eta 0:00:01
-     |█                               | 122 kB 65.7 MB/s eta 0:00:01
-     |█                               | 133 kB 65.7 MB/s eta 0:00:01
-     |█▏                              | 143 kB 65.7 MB/s eta 0:00:01
-     |█▏                              | 153 kB 65.7 MB/s eta 0:00:01
-     |█▎                              | 163 kB 65.7 MB/s eta 0:00:01
-     |█▍                              | 174 kB 65.7 MB/s eta 0:00:01
-     |█▌                              | 184 kB 65.7 MB/s eta 0:00:01
-     |█▌                              | 194 kB 65.7 MB/s eta 0:00:01
-     |█▋                              | 204 kB 65.7 MB/s eta 0:00:01
-     |█▊                              | 215 kB 65.7 MB/s eta 0:00:01
-     |█▉                              | 225 kB 65.7 MB/s eta 0:00:01
-     |█▉                              | 235 kB 65.7 MB/s eta 0:00:01
-     |██                              | 245 kB 65.7 MB/s eta 0:00:01
-     |██                              | 256 kB 65.7 MB/s eta 0:00:01
-     |██                              | 266 kB 65.7 MB/s eta 0:00:01
-     |██▏                             | 276 kB 65.7 MB/s eta 0:00:01
-     |██▎                             | 286 kB 65.7 MB/s eta 0:00:01
-     |██▍                             | 296 kB 65.7 MB/s eta 0:00:01
-     |██▍                             | 307 kB 65.7 MB/s eta 0:00:01
-     |██▌                             | 317 kB 65.7 MB/s eta 0:00:01
-     |██▋                             | 327 kB 65.7 MB/s eta 0:00:01
-     |██▊                             | 337 kB 65.7 MB/s eta 0:00:01
-     |██▊                             | 348 kB 65.7 MB/s eta 0:00:01
-     |██▉                             | 358 kB 65.7 MB/s eta 0:00:01
-     |███                             | 368 kB 65.7 MB/s eta 0:00:01
-     |███                             | 378 kB 65.7 MB/s eta 0:00:01
-     |███                             | 389 kB 65.7 MB/s eta 0:00:01
-     |███▏                            | 399 kB 65.7 MB/s eta 0:00:01
-     |███▎                            | 409 kB 65.7 MB/s eta 0:00:01
-     |███▎                            | 419 kB 65.7 MB/s eta 0:00:01
-     |███▍                            | 430 kB 65.7 MB/s eta 0:00:01
-     |███▌                            | 440 kB 65.7 MB/s eta 0:00:01
-     |███▋                            | 450 kB 65.7 MB/s eta 0:00:01
-     |███▋                            | 460 kB 65.7 MB/s eta 0:00:01
-     |███▊                            | 471 kB 65.7 MB/s eta 0:00:01
-     |███▉                            | 481 kB 65.7 MB/s eta 0:00:01
-     |███▉                            | 491 kB 65.7 MB/s eta 0:00:01
-     |████                            | 501 kB 65.7 MB/s eta 0:00:01
-     |████                            | 512 kB 65.7 MB/s eta 0:00:01
-     |████▏                           | 522 kB 65.7 MB/s eta 0:00:01
-     |████▏                           | 532 kB 65.7 MB/s eta 0:00:01
-     |████▎                           | 542 kB 65.7 MB/s eta 0:00:01
-     |████▍                           | 552 kB 65.7 MB/s eta 0:00:01
-     |████▌                           | 563 kB 65.7 MB/s eta 0:00:01
-     |████▌                           | 573 kB 65.7 MB/s eta 0:00:01
-     |████▋                           | 583 kB 65.7 MB/s eta 0:00:01
-     |████▊                           | 593 kB 65.7 MB/s eta 0:00:01
-     |████▊                           | 604 kB 65.7 MB/s eta 0:00:01
-     |████▉                           | 614 kB 65.7 MB/s eta 0:00:01
-     |█████                           | 624 kB 65.7 MB/s eta 0:00:01
-     |█████                           | 634 kB 65.7 MB/s eta 0:00:01
-     |█████                           | 645 kB 65.7 MB/s eta 0:00:01
-     |█████▏                          | 655 kB 65.7 MB/s eta 0:00:01
-     |█████▎                          | 665 kB 65.7 MB/s eta 0:00:01
-     |█████▍                          | 675 kB 65.7 MB/s eta 0:00:01
-     |█████▍                          | 686 kB 65.7 MB/s eta 0:00:01
-     |█████▌                          | 696 kB 65.7 MB/s eta 0:00:01
-     |█████▋                          | 706 kB 65.7 MB/s eta 0:00:01
-     |█████▋                          | 716 kB 65.7 MB/s eta 0:00:01
-     |█████▊                          | 727 kB 65.7 MB/s eta 0:00:01
-     |█████▉                          | 737 kB 65.7 MB/s eta 0:00:01
-     |██████                          | 747 kB 65.7 MB/s eta 0:00:01
-     |██████                          | 757 kB 65.7 MB/s eta 0:00:01
-     |██████                          | 768 kB 65.7 MB/s eta 0:00:01
-     |██████▏                         | 778 kB 65.7 MB/s eta 0:00:01
-     |██████▎                         | 788 kB 65.7 MB/s eta 0:00:01
-     |██████▎                         | 798 kB 65.7 MB/s eta 0:00:01
-     |██████▍                         | 808 kB 65.7 MB/s eta 0:00:01
-     |██████▌                         | 819 kB 65.7 MB/s eta 0:00:01
-     |██████▌                         | 829 kB 65.7 MB/s eta 0:00:01
-     |██████▋                         | 839 kB 65.7 MB/s eta 0:00:01
-     |██████▊                         | 849 kB 65.7 MB/s eta 0:00:01
-     |██████▉                         | 860 kB 65.7 MB/s eta 0:00:01
-     |██████▉                         | 870 kB 65.7 MB/s eta 0:00:01
-     |███████                         | 880 kB 65.7 MB/s eta 0:00:01
-     |███████                         | 890 kB 65.7 MB/s eta 0:00:01
-     |███████▏                        | 901 kB 65.7 MB/s eta 0:00:01
-     |███████▏                        | 911 kB 65.7 MB/s eta 0:00:01
-     |███████▎                        | 921 kB 65.7 MB/s eta 0:00:01
-     |███████▍                        | 931 kB 65.7 MB/s eta 0:00:01
-     |███████▍                        | 942 kB 65.7 MB/s eta 0:00:01
-     |███████▌                        | 952 kB 65.7 MB/s eta 0:00:01
-     |███████▋                        | 962 kB 65.7 MB/s eta 0:00:01
-     |███████▊                        | 972 kB 65.7 MB/s eta 0:00:01
-     |███████▊                        | 983 kB 65.7 MB/s eta 0:00:01
-     |███████▉                        | 993 kB 65.7 MB/s eta 0:00:01
-     |████████                        | 1.0 MB 65.7 MB/s eta 0:00:01
-     |████████                        | 1.0 MB 65.7 MB/s eta 0:00:01
-     |████████                        | 1.0 MB 65.7 MB/s eta 0:00:01
-     |████████▏                       | 1.0 MB 65.7 MB/s eta 0:00:01
-     |████████▎                       | 1.0 MB 65.7 MB/s eta 0:00:01
-     |████████▎                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |████████▍                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |████████▌                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |████████▋                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |████████▋                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |████████▊                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |████████▉                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |█████████                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |█████████                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |█████████                       | 1.1 MB 65.7 MB/s eta 0:00:01
-     |█████████▏                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |█████████▏                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |█████████▎                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |█████████▍                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |█████████▌                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |█████████▌                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |█████████▋                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |█████████▊                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |█████████▉                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |█████████▉                      | 1.2 MB 65.7 MB/s eta 0:00:01
-     |██████████                      | 1.3 MB 65.7 MB/s eta 0:00:01
-     |██████████                      | 1.3 MB 65.7 MB/s eta 0:00:01
-     |██████████                      | 1.3 MB 65.7 MB/s eta 0:00:01
-     |██████████▏                     | 1.3 MB 65.7 MB/s eta 0:00:01
-     |██████████▎                     | 1.3 MB 65.7 MB/s eta 0:00:01
-     |██████████▍                     | 1.3 MB 65.7 MB/s eta 0:00:01
-     |██████████▍                     | 1.3 MB 65.7 MB/s eta 0:00:01
-     |██████████▌                     | 1.3 MB 65.7 MB/s eta 0:00:01
-     |██████████▋                     | 1.3 MB 65.7 MB/s eta 0:00:01
-     |██████████▊                     | 1.4 MB 65.7 MB/s eta 0:00:01
-     |██████████▊                     | 1.4 MB 65.7 MB/s eta 0:00:01
-     |██████████▉                     | 1.4 MB 65.7 MB/s eta 0:00:01
-     |███████████                     | 1.4 MB 65.7 MB/s eta 0:00:01
-     |███████████                     | 1.4 MB 65.7 MB/s eta 0:00:01
-     |███████████                     | 1.4 MB 65.7 MB/s eta 0:00:01
-     |███████████▏                    | 1.4 MB 65.7 MB/s eta 0:00:01
-     |███████████▎                    | 1.4 MB 65.7 MB/s eta 0:00:01
-     |███████████▎                    | 1.4 MB 65.7 MB/s eta 0:00:01
-     |███████████▍                    | 1.4 MB 65.7 MB/s eta 0:00:01
-     |███████████▌                    | 1.5 MB 65.7 MB/s eta 0:00:01
-     |███████████▋                    | 1.5 MB 65.7 MB/s eta 0:00:01
-     |███████████▋                    | 1.5 MB 65.7 MB/s eta 0:00:01
-     |███████████▊                    | 1.5 MB 65.7 MB/s eta 0:00:01
-     |███████████▉                    | 1.5 MB 65.7 MB/s eta 0:00:01
-     |███████████▉                    | 1.5 MB 65.7 MB/s eta 0:00:01
-     |████████████                    | 1.5 MB 65.7 MB/s eta 0:00:01
-     |████████████                    | 1.5 MB 65.7 MB/s eta 0:00:01
-     |████████████▏                   | 1.5 MB 65.7 MB/s eta 0:00:01
-     |████████████▏                   | 1.5 MB 65.7 MB/s eta 0:00:01
-     |████████████▎                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |████████████▍                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |████████████▌                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |████████████▌                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |████████████▋                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |████████████▊                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |████████████▊                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |████████████▉                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |█████████████                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |█████████████                   | 1.6 MB 65.7 MB/s eta 0:00:01
-     |█████████████                   | 1.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████▏                  | 1.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████▎                  | 1.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████▍                  | 1.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████▍                  | 1.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████▌                  | 1.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████▋                  | 1.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████▋                  | 1.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████▊                  | 1.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████▉                  | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████                  | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████                  | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████                  | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████▏                 | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████▎                 | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████▎                 | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████▍                 | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████▌                 | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████▌                 | 1.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████▋                 | 1.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████▊                 | 1.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████▉                 | 1.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████▉                 | 1.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████                 | 1.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████                 | 1.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████▏                | 1.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████▏                | 1.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████▎                | 1.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████▍                | 1.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████▍                | 2.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████▌                | 2.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████▋                | 2.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████▊                | 2.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████▊                | 2.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████▉                | 2.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████                | 2.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████                | 2.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████                | 2.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████▏               | 2.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████▎               | 2.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████▍               | 2.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████▍               | 2.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████▌               | 2.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████▋               | 2.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████▋               | 2.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████▊               | 2.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████▉               | 2.1 MB 65.7 MB/s eta 0:00:01
-     |█████████████████               | 2.1 MB 65.7 MB/s eta 0:00:01
-     |█████████████████               | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████               | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▏              | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▎              | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▎              | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▍              | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▌              | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▌              | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▋              | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▊              | 2.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▉              | 2.3 MB 65.7 MB/s eta 0:00:01
-     |█████████████████▉              | 2.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████              | 2.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████              | 2.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▏             | 2.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▏             | 2.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▎             | 2.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▍             | 2.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▍             | 2.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▌             | 2.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▋             | 2.4 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▊             | 2.4 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▊             | 2.4 MB 65.7 MB/s eta 0:00:01
-     |██████████████████▉             | 2.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████             | 2.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████             | 2.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████             | 2.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████▏            | 2.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████▎            | 2.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████▎            | 2.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████▍            | 2.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████▌            | 2.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████▋            | 2.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████▋            | 2.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████▊            | 2.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████▉            | 2.5 MB 65.7 MB/s eta 0:00:01
-     |████████████████████            | 2.5 MB 65.7 MB/s eta 0:00:01
-     |████████████████████            | 2.5 MB 65.7 MB/s eta 0:00:01
-     |████████████████████            | 2.5 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▏           | 2.5 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▏           | 2.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▎           | 2.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▍           | 2.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▌           | 2.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▌           | 2.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▋           | 2.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▊           | 2.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▉           | 2.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████▉           | 2.6 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████           | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████           | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████           | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████▏          | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████▎          | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████▍          | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████▍          | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████▌          | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████▋          | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████▊          | 2.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████▊          | 2.8 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████▉          | 2.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████          | 2.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████          | 2.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████          | 2.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▏         | 2.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▎         | 2.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▎         | 2.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▍         | 2.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▌         | 2.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▋         | 2.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▋         | 2.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▊         | 2.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▉         | 2.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████▉         | 2.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████         | 2.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████         | 2.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▏        | 2.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▏        | 2.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▎        | 2.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▍        | 3.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▌        | 3.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▌        | 3.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▋        | 3.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▊        | 3.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▊        | 3.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████▉        | 3.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████        | 3.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████        | 3.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████        | 3.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████▏       | 3.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████▎       | 3.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████▍       | 3.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████▍       | 3.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████▌       | 3.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████▋       | 3.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████▋       | 3.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████▊       | 3.1 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████▉       | 3.1 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████       | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████       | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████       | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▏      | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▎      | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▎      | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▍      | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▌      | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▌      | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▋      | 3.2 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▊      | 3.3 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▉      | 3.3 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████▉      | 3.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████      | 3.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████      | 3.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▏     | 3.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▏     | 3.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▎     | 3.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▍     | 3.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▍     | 3.3 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▌     | 3.4 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▋     | 3.4 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▊     | 3.4 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▊     | 3.4 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████▉     | 3.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████     | 3.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████     | 3.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████     | 3.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████▏    | 3.4 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████▎    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████▎    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████▍    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████▌    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████▋    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████▋    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████▊    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████▉    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████    | 3.5 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████    | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▏   | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▏   | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▎   | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▍   | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▌   | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▌   | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▋   | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▊   | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▉   | 3.6 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████▉   | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████   | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████   | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████   | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████▏  | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████▎  | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████▍  | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████▍  | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████▌  | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████▋  | 3.7 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████▊  | 3.8 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████▊  | 3.8 MB 65.7 MB/s eta 0:00:01
-     |█████████████████████████████▉  | 3.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████  | 3.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████  | 3.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████  | 3.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████▏ | 3.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████▎ | 3.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████▎ | 3.8 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████▍ | 3.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████▌ | 3.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████▋ | 3.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████▋ | 3.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████▊ | 3.9 MB 65.7 MB/s eta 0:00:01
-     |██████████████████████████████▉ | 3.9 MB 65.7 MB/s eta 0:00:01
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |██████████████████████████████▉ | 3.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████ | 3.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████ | 3.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▏| 3.9 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▏| 4.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▎| 4.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▍| 4.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▌| 4.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▌| 4.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▋| 4.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▊| 4.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▉| 4.0 MB 65.7 MB/s eta 0:00:01
-     |███████████████████████████████▉| 4.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████████| 4.0 MB 65.7 MB/s eta 0:00:01
-     |████████████████████████████████| 4.1 MB 65.7 MB/s 
-?25hCollecting itemadapter&gt;=0.1.0
-  Downloading itemadapter-0.7.0-py3-none-any.whl (10 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting zope.interface&gt;=5.1.0
-  Downloading zope.interface-5.5.2-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (254 kB)
-?25l
-     |█▎                              | 10 kB 40.7 MB/s eta 0:00:01
-     |██▋                             | 20 kB 52.8 MB/s eta 0:00:01
-     |███▉                            | 30 kB 64.6 MB/s eta 0:00:01
-     |█████▏                          | 40 kB 72.2 MB/s eta 0:00:01
-     |██████▌                         | 51 kB 77.9 MB/s eta 0:00:01
-     |███████▊                        | 61 kB 84.9 MB/s eta 0:00:01
-     |█████████                       | 71 kB 88.5 MB/s eta 0:00:01
-     |██████████▎                     | 81 kB 90.0 MB/s eta 0:00:01
-     |███████████▋                    | 92 kB 93.9 MB/s eta 0:00:01
-     |█████████████                   | 102 kB 96.9 MB/s eta 0:00:01
-     |██████████████▏                 | 112 kB 96.9 MB/s eta 0:00:01
-     |███████████████▌                | 122 kB 96.9 MB/s eta 0:00:01
-     |████████████████▊               | 133 kB 96.9 MB/s eta 0:00:01
-     |██████████████████              | 143 kB 96.9 MB/s eta 0:00:01
-     |███████████████████▍            | 153 kB 96.9 MB/s eta 0:00:01
-     |████████████████████▋           | 163 kB 96.9 MB/s eta 0:00:01
-     |██████████████████████          | 174 kB 96.9 MB/s eta 0:00:01
-     |███████████████████████▏        | 184 kB 96.9 MB/s eta 0:00:01
-     |████████████████████████▌       | 194 kB 96.9 MB/s eta 0:00:01
-     |█████████████████████████▉      | 204 kB 96.9 MB/s eta 0:00:01
-     |███████████████████████████     | 215 kB 96.9 MB/s eta 0:00:01
-     |████████████████████████████▍   | 225 kB 96.9 MB/s eta 0:00:01
-     |█████████████████████████████▋  | 235 kB 96.9 MB/s eta 0:00:01
-     |███████████████████████████████ | 245 kB 96.9 MB/s eta 0:00:01
-     |████████████████████████████████| 254 kB 96.9 MB/s 
-?25hRequirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from scrapy) (21.3)
-Collecting protego&gt;=0.1.15
-  Downloading Protego-0.2.1-py2.py3-none-any.whl (8.2 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting cssselect&gt;=0.9.1
-  Downloading cssselect-1.2.0-py2.py3-none-any.whl (18 kB)
+Requirement already satisfied: cssselect&gt;=0.9.1 in /usr/local/lib/python3.7/dist-packages (from scrapy) (1.2.0)
 Requirement already satisfied: cffi&gt;=1.12 in /usr/local/lib/python3.7/dist-packages (from cryptography&gt;=3.3-&gt;scrapy) (1.15.1)
 Requirement already satisfied: pycparser in /usr/local/lib/python3.7/dist-packages (from cffi&gt;=1.12-&gt;cryptography&gt;=3.3-&gt;scrapy) (2.21)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jmespath&gt;=0.9.5
-  Downloading jmespath-1.0.1-py3-none-any.whl (20 kB)
+Requirement already satisfied: jmespath&gt;=0.9.5 in /usr/local/lib/python3.7/dist-packages (from itemloaders&gt;=1.0.1-&gt;scrapy) (1.0.1)
 Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from protego&gt;=0.1.15-&gt;scrapy) (1.15.0)
-Requirement already satisfied: attrs&gt;=19.1.0 in /usr/local/lib/python3.7/dist-packages (from service-identity&gt;=18.1.0-&gt;scrapy) (21.4.0)
-Requirement already satisfied: pyasn1 in /usr/local/lib/python3.7/dist-packages (from service-identity&gt;=18.1.0-&gt;scrapy) (0.4.8)
 Requirement already satisfied: pyasn1-modules in /usr/local/lib/python3.7/dist-packages (from service-identity&gt;=18.1.0-&gt;scrapy) (0.2.8)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting constantly&gt;=15.1
-  Downloading constantly-15.1.0-py2.py3-none-any.whl (7.9 kB)
-Collecting Automat&gt;=0.8.0
-  Downloading Automat-22.10.0-py2.py3-none-any.whl (26 kB)
+Requirement already satisfied: attrs&gt;=19.1.0 in /usr/local/lib/python3.7/dist-packages (from service-identity&gt;=18.1.0-&gt;scrapy) (22.1.0)
+Requirement already satisfied: pyasn1 in /usr/local/lib/python3.7/dist-packages (from service-identity&gt;=18.1.0-&gt;scrapy) (0.4.8)
+Requirement already satisfied: Automat&gt;=0.8.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (22.10.0)
+Requirement already satisfied: incremental&gt;=21.3.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (22.10.0)
+Requirement already satisfied: hyperlink&gt;=17.1.1 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (21.0.0)
+Requirement already satisfied: constantly&gt;=15.1 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (15.1.0)
 Requirement already satisfied: typing-extensions&gt;=3.6.5 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (4.1.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting incremental&gt;=21.3.0
-  Downloading incremental-22.10.0-py2.py3-none-any.whl (16 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting hyperlink&gt;=17.1.1
-  Downloading hyperlink-21.0.0-py2.py3-none-any.whl (74 kB)
-?25l
-     |████▍                           | 10 kB 30.6 MB/s eta 0:00:01
-     |████████▉                       | 20 kB 39.3 MB/s eta 0:00:01
-     |█████████████▏                  | 30 kB 48.5 MB/s eta 0:00:01
-     |█████████████████▋              | 40 kB 55.4 MB/s eta 0:00:01
-     |██████████████████████          | 51 kB 61.4 MB/s eta 0:00:01
-     |██████████████████████████▍     | 61 kB 67.9 MB/s eta 0:00:01
-     |██████████████████████████████▊ | 71 kB 71.8 MB/s eta 0:00:01
-     |████████████████████████████████| 74 kB 3.7 MB/s 
-?25hRequirement already satisfied: idna&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from hyperlink&gt;=17.1.1-&gt;Twisted&gt;=18.9.0-&gt;scrapy) (2.10)
+Requirement already satisfied: idna&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from hyperlink&gt;=17.1.1-&gt;Twisted&gt;=18.9.0-&gt;scrapy) (2.10)
 Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging-&gt;scrapy) (3.0.9)
-Requirement already satisfied: requests&gt;=2.1.0 in /usr/local/lib/python3.7/dist-packages (from tldextract-&gt;scrapy) (2.23.0)
-Collecting requests-file&gt;=1.4
-  Downloading requests_file-1.5.1-py2.py3-none-any.whl (3.7 kB)
 Requirement already satisfied: filelock&gt;=3.0.8 in /usr/local/lib/python3.7/dist-packages (from tldextract-&gt;scrapy) (3.8.0)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.1.0-&gt;tldextract-&gt;scrapy) (1.24.3)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.1.0-&gt;tldextract-&gt;scrapy) (3.0.4)
+Requirement already satisfied: requests-file&gt;=1.4 in /usr/local/lib/python3.7/dist-packages (from tldextract-&gt;scrapy) (1.5.1)
+Requirement already satisfied: requests&gt;=2.1.0 in /usr/local/lib/python3.7/dist-packages (from tldextract-&gt;scrapy) (2.23.0)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.1.0-&gt;tldextract-&gt;scrapy) (2022.9.24)
-Building wheels for collected packages: PyDispatcher
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for PyDispatcher (setup.py) ... ?25l?25hdone
-  Created wheel for PyDispatcher: filename=PyDispatcher-2.0.6-py3-none-any.whl size=11959 sha256=d9de1f05c4b9cbd7fb1cba1761c9445d7d84d70259ead8887465b2d2fe70e26a
-  Stored in directory: /root/.cache/pip/wheels/c9/d6/6a/de198d890277cde60ca3dbebe7ae592d3b381c7d9bb2455f4d
-Successfully built PyDispatcher
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: w3lib, cssselect, zope.interface, requests-file, parsel, jmespath, itemadapter, incremental, hyperlink, cryptography, constantly, Automat, Twisted, tldextract, service-identity, queuelib, pyOpenSSL, PyDispatcher, protego, itemloaders, scrapy
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed Automat-22.10.0 PyDispatcher-2.0.6 Twisted-22.10.0 constantly-15.1.0 cryptography-38.0.3 cssselect-1.2.0 hyperlink-21.0.0 incremental-22.10.0 itemadapter-0.7.0 itemloaders-1.0.6 jmespath-1.0.1 parsel-1.7.0 protego-0.2.1 pyOpenSSL-22.1.0 queuelib-1.6.2 requests-file-1.5.1 scrapy-2.7.1 service-identity-21.1.0 tldextract-3.4.0 w3lib-2.0.1 zope.interface-5.5.2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting crochet
-  Downloading crochet-2.0.0-py3-none-any.whl (31 kB)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.1.0-&gt;tldextract-&gt;scrapy) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.1.0-&gt;tldextract-&gt;scrapy) (1.24.3)
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: crochet in /usr/local/lib/python3.7/dist-packages (2.0.0)
 Requirement already satisfied: Twisted&gt;=16.0 in /usr/local/lib/python3.7/dist-packages (from crochet) (22.10.0)
 Requirement already satisfied: wrapt in /usr/local/lib/python3.7/dist-packages (from crochet) (1.14.1)
 Requirement already satisfied: hyperlink&gt;=17.1.1 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (21.0.0)
-Requirement already satisfied: incremental&gt;=21.3.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (22.10.0)
-Requirement already satisfied: typing-extensions&gt;=3.6.5 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (4.1.1)
-Requirement already satisfied: attrs&gt;=19.2.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (21.4.0)
-Requirement already satisfied: zope.interface&gt;=4.4.2 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (5.5.2)
 Requirement already satisfied: Automat&gt;=0.8.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (22.10.0)
+Requirement already satisfied: incremental&gt;=21.3.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (22.10.0)
 Requirement already satisfied: constantly&gt;=15.1 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (15.1.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from Automat&gt;=0.8.0-&gt;Twisted&gt;=16.0-&gt;crochet) (1.15.0)
+Requirement already satisfied: zope.interface&gt;=4.4.2 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (5.5.2)
+Requirement already satisfied: typing-extensions&gt;=3.6.5 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (4.1.1)
+Requirement already satisfied: attrs&gt;=19.2.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (22.1.0)
+Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from Automat&gt;=0.8.0-&gt;Twisted&gt;=16.0-&gt;crochet) (1.15.0)
 Requirement already satisfied: idna&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from hyperlink&gt;=17.1.1-&gt;Twisted&gt;=16.0-&gt;crochet) (2.10)
 Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from zope.interface&gt;=4.4.2-&gt;Twisted&gt;=16.0-&gt;crochet) (57.4.0)
-Installing collected packages: crochet
-Successfully installed crochet-2.0.0
 </pre></div>
 </div>
 </div>
@@ -1393,21 +577,155 @@ See the documentation of the &#39;REQUEST_FINGERPRINTER_IMPLEMENTATION&#39; sett
 <p>Mengambil dan Membaca data CSV yang bernama news.csv</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataNews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;news.csv&#39;</span><span class="p">)</span>
 <span class="n">dataNews</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">e1a3d7c03a59</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dataNews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;news.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dataNews</span>
+<div class="output text_html">
+  <div id="df-c38a8ae6-64ca-45d3-9a44-68ef5fc0aa84">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
-</pre></div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>news</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>TEMPO.CO, Jakarta - Presiden Joko Widodo atau ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>"Iya betul (dilantik 17 Oktober)," ujar Heru s...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Sebelumnya, Kepala Pusat Penerangan (Kapuspen)...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Adapun ketiga orang tersebut, antara lain Heru...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sekilas mengenai Heru Budi Hartono, dia menjab...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Pada 2008, Heru Budi Hartono menjabat sebagai ...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Baca juga: Jokowi Beberkan Sejumlah Alasan Pi...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>M JULNIS FIRMANSYAH</td>
+    </tr>
+  </tbody>
+</table>
 </div>
-</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c38a8ae6-64ca-45d3-9a44-68ef5fc0aa84')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-c38a8ae6-64ca-45d3-9a44-68ef5fc0aa84 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-c38a8ae6-64ca-45d3-9a44-68ef5fc0aa84');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
 </div>
 <p>PyPDF2 adalah pustaka PDF python murni gratis dan open-source yang mampu memisahkan, menggabungkan , memotong, dan mengubah halaman file PDF.</p>
 <p>Install PyPDF2</p>
@@ -1419,8 +737,8 @@ See the documentation of the &#39;REQUEST_FINGERPRINTER_IMPLEMENTATION&#39; sett
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: PyPDF2 in /usr/local/lib/python3.7/dist-packages (2.11.1)
-Requirement already satisfied: typing-extensions&gt;=3.10.0.0 in /usr/local/lib/python3.7/dist-packages (from PyPDF2) (4.1.1)
+Requirement already satisfied: PyPDF2 in /usr/local/lib/python3.7/dist-packages (2.11.2)
+Requirement already satisfied: typing_extensions&gt;=3.10.0.0 in /usr/local/lib/python3.7/dist-packages (from PyPDF2) (4.1.1)
 </pre></div>
 </div>
 </div>
@@ -1773,7 +1091,7 @@ Gubernur.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_35_0.png" src="_images/notebooks_35_0.png" />
+<img alt="_images/notebooks_37_0.png" src="_images/notebooks_37_0.png" />
 </div>
 </div>
 <p>Jumlah Banyak Sisi</p>
@@ -1827,7 +1145,7 @@ Gubernur.
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-03082c76-4a3d-49a7-95e4-e4253bae4ca3">
+  <div id="df-3fa93ff9-4dbc-4d3f-814a-abd3a0cd77d7">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1880,7 +1198,7 @@ Gubernur.
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-03082c76-4a3d-49a7-95e4-e4253bae4ca3')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-3fa93ff9-4dbc-4d3f-814a-abd3a0cd77d7')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1931,12 +1249,12 @@ Gubernur.
 
       <script>
         const buttonEl =
-          document.querySelector('#df-03082c76-4a3d-49a7-95e4-e4253bae4ca3 button.colab-df-convert');
+          document.querySelector('#df-3fa93ff9-4dbc-4d3f-814a-abd3a0cd77d7 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-03082c76-4a3d-49a7-95e4-e4253bae4ca3');
+          const element = document.querySelector('#df-3fa93ff9-4dbc-4d3f-814a-abd3a0cd77d7');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1967,7 +1285,7 @@ Gubernur.
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d56cba66-80da-4565-ab7f-dac29b6a6608">
+  <div id="df-04bdeeb6-f189-426f-9642-151eb0d6d3d0">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -2020,7 +1338,7 @@ Gubernur.
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-d56cba66-80da-4565-ab7f-dac29b6a6608')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-04bdeeb6-f189-426f-9642-151eb0d6d3d0')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -2071,12 +1389,12 @@ Gubernur.
 
       <script>
         const buttonEl =
-          document.querySelector('#df-d56cba66-80da-4565-ab7f-dac29b6a6608 button.colab-df-convert');
+          document.querySelector('#df-04bdeeb6-f189-426f-9642-151eb0d6d3d0 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-d56cba66-80da-4565-ab7f-dac29b6a6608');
+          const element = document.querySelector('#df-04bdeeb6-f189-426f-9642-151eb0d6d3d0');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -2106,7 +1424,7 @@ Gubernur.
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-22f3a208-e897-4dc1-9fa0-c7d31b02d97d">
+  <div id="df-bf1b5307-c80c-4133-85a6-c5c27ffb9ac9">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -2159,7 +1477,7 @@ Gubernur.
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-22f3a208-e897-4dc1-9fa0-c7d31b02d97d')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-bf1b5307-c80c-4133-85a6-c5c27ffb9ac9')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -2210,12 +1528,12 @@ Gubernur.
 
       <script>
         const buttonEl =
-          document.querySelector('#df-22f3a208-e897-4dc1-9fa0-c7d31b02d97d button.colab-df-convert');
+          document.querySelector('#df-bf1b5307-c80c-4133-85a6-c5c27ffb9ac9 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-22f3a208-e897-4dc1-9fa0-c7d31b02d97d');
+          const element = document.querySelector('#df-bf1b5307-c80c-4133-85a6-c5c27ffb9ac9');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -2248,10 +1566,10 @@ Gubernur.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: nltk in /usr/local/lib/python3.7/dist-packages (3.7)
-Requirement already satisfied: regex&gt;=2021.8.3 in /usr/local/lib/python3.7/dist-packages (from nltk) (2022.6.2)
-Requirement already satisfied: tqdm in /usr/local/lib/python3.7/dist-packages (from nltk) (4.64.1)
 Requirement already satisfied: joblib in /usr/local/lib/python3.7/dist-packages (from nltk) (1.2.0)
 Requirement already satisfied: click in /usr/local/lib/python3.7/dist-packages (from nltk) (7.1.2)
+Requirement already satisfied: regex&gt;=2021.8.3 in /usr/local/lib/python3.7/dist-packages (from nltk) (2022.6.2)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.7/dist-packages (from nltk) (4.64.1)
 </pre></div>
 </div>
 </div>
@@ -2264,7 +1582,11 @@ Requirement already satisfied: click in /usr/local/lib/python3.7/dist-packages (
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: PySastrawi in /usr/local/lib/python3.7/dist-packages (1.2.0)
+Collecting PySastrawi
+  Downloading PySastrawi-1.2.0-py2.py3-none-any.whl (210 kB)
+     |████████████████████████████████| 210 kB 5.2 MB/s 
+?25hInstalling collected packages: PySastrawi
+Successfully installed PySastrawi-1.2.0
 </pre></div>
 </div>
 </div>
@@ -2277,7 +1599,11 @@ Requirement already satisfied: PySastrawi in /usr/local/lib/python3.7/dist-packa
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: Sastrawi in /usr/local/lib/python3.7/dist-packages (1.0.1)
+Collecting Sastrawi
+  Downloading Sastrawi-1.0.1-py2.py3-none-any.whl (209 kB)
+     |████████████████████████████████| 209 kB 5.4 MB/s 
+?25hInstalling collected packages: Sastrawi
+Successfully installed Sastrawi-1.0.1
 </pre></div>
 </div>
 </div>
@@ -2371,13 +1697,13 @@ Gubernur.
 <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
 <span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
 <span class="kn">import</span> <span class="nn">nltk</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
@@ -2685,6 +2011,9 @@ Gubernur.
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:twisted:/usr/local/lib/python3.7/dist-packages/sklearn/utils/deprecation.py:87: builtins.FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 1:  [&#39;oktober&#39;, &#39;kapuspen&#39;, &#39;news&#39;, &#39;pekan&#39;, &#39;jumat&#39;]
 Topic 2:  [&#39;jakarta&#39;, &#39;2022&#39;, &#39;dki&#39;, &#39;melantik&#39;, &#39;iya&#39;]
 Topic 3:  [&#39;gubernur&#39;, &#39;2022&#39;, &#39;pj&#39;, &#39;dki&#39;, &#39;kapuspen&#39;]
